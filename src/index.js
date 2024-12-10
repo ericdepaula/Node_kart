@@ -16,15 +16,40 @@ const player2 = {
 
 // Função onde realiza o solteio dos dados
 async function rollDice() {
-    // MATH é uma função do Node, FLOOR para tornar a soma ao valor aproximado e, RANDOM já sabe né
+  // MATH é uma função do Node, FLOOR para tornar a soma ao valor aproximado e RANDOM já sabe né
   return Math.floor(Math.random() * 6) + 1;
 }
 
+// Função da seleção de pistas (SORTEIO DE BLOCOS)
+async function getRandomBlock() {
+  let random = Math.random();
+  let result;
+
+  switch (true) {
+    case random < 0.33:
+      result = "RETA";
+      break;
+    case random < 0.66:
+      result = "CURVA";
+      break;
+    default:
+      result = "CONFRONTO";
+      break;
+  }
+
+  return result;
+}
+
 async function playRaceEngine(character1, character2) {
+  console.log(`--------------------------------------`);
   for (let round = 1; round <= 5; round++) {
-    console.log(`🏁 Rodada ${round}`);
+    console.log(`🏁 Rodada ${round}\n`);
 
     // Sortear Bloco
+    let block = await getRandomBlock();
+    console.log(`Bloco: ${block}\n`);
+
+    console.log(`--------------------------------------\n`);
   }
 }
 
