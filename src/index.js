@@ -49,7 +49,13 @@ async function playRaceEngine(character1, character2) {
     let block = await getRandomBlock();
     console.log(`Bloco: ${block}\n`);
 
-    console.log(`--------------------------------------\n`);
+    // Sorteio dos dados
+    let resultDice1 = await rollDice();
+    let resultDice2 = await rollDice();
+
+    console.log(resultDice1, resultDice2);
+
+    console.log(`\n--------------------------------------\n`);
   }
 }
 
