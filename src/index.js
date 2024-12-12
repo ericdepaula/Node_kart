@@ -150,16 +150,11 @@ async function winnerResult(character1, character2) {
   console.log(`${character1.NOME} ficou com ${character1.PONTOS} pontos\n`);
   console.log(`${character2.NOME} ficou com ${character2.PONTOS} pontos\n`);
 
-  if (character1.PONTOS > character2.PONTOS) {
+  if (character1.PONTOS > character2.PONTOS)
     console.log(`${character1.NOME} é o grande vencedor ✨🎉\n`);
-  }
-  if (character1.PONTOS < character2.PONTOS) {
+  else if (character1.PONTOS < character2.PONTOS)
     console.log(`${character2.NOME} é grande vencedor ✨🎉\n`);
-  }
-  if (character1.PONTOS == character2.PONTOS) {
-      console.log(`EMPATE 🤕`);
-      
-  }
+  else console.log(`EMPATE 🤕`);
 }
 
 // Chaves no começo e no final tranformar a função em uma função auto invocável (auto invoke)
