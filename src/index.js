@@ -41,7 +41,11 @@ async function getRandomBlock() {
 }
 
 async function logRollResult(characterName, block, resultDice, attribute) {
-  console.log(`${characterName} jogou o 🎲 de ${block} e tirou ${resultDice} + ${attribute} = ${resultDice + attribute}\n`);
+  console.log(
+    `${characterName} jogou o 🎲 de ${block} e tirou ${resultDice} + ${attribute} = ${
+      resultDice + attribute
+    }\n`
+  );
 }
 
 async function playRaceEngine(character1, character2) {
@@ -99,10 +103,57 @@ async function playRaceEngine(character1, character2) {
     if (block == "CONFRONTO") {
       let powerResult1 = character1.PODER + resultDice1;
       let powerResult2 = character2.PODER + resultDice2;
-    }
 
+      console.log(
+        `${character1.NOME} iniciou uma batalha contra ${character2.NOME}`
+      );
+
+      await logRollResult(
+        character1.NOME,
+        "Poder",
+        resultDice1,
+        character1.PODER
+      );
+      await logRollResult(
+        character2.NOME,
+        "Poder",
+        resultDice2,
+        character2.PODER
+      );
+
+      if (powerResult1 > powerResult2) {
+        if (character2.PONTOS > 0) {
+          character2.PONTOS--;
+          console.log(`${character2.NOME} perdeu um ponto!`);
+        }
+        console.log(`${character2.NOME} perdeu o confronto ${character2.PONTOS}`);
+      }
+      if (powerResult1 < powerResult2) {
+        if (character1.PONTOS > 0) {
+          character1.PONTOS--;
+          console.log(`${character1.NOME} perdeu um ponto!`);
+        }
+        console.log(`${character1.NOME} perdeu o confronto ${character1.PONTOS}`);
+      }
+      if (powerResult1 == powerResult2) {
+        console.log("Empate! Ninguém perdeu ponto");
+      }
+    }
+    // Verifica o vencedor
+    if (resultSkill1 > resultSkill2) {
+      console.log(`${character1.NOME} marcou um ponto 🎉`);
+      character1.PONTOS++;
+    } else if (resultSkill1 < resultSkill2) {
+      console.log(`${character2.NOME} marcou um ponto 🎉`);
+      character2.PONTOS++;
+    } else if (resultSkill1 == resultSkill2) {
+      console.log("EMPATE! Ninguém pontuou");
+    }
     console.log(`--------------------------------------\n`);
   }
+  console.log("VAMOS AO GRANDE VENCEDOR!🏆");
+  console.log(`\n${character1.NOME} ficou com: ${character1.PONTOS} pontos`);
+  console.log(`\n${character2.NOME} ficou com: ${character2.PONTOS} pontos`);
 }
 
 // Chaves no começo e no final tranformar a função em uma função auto invocável (auto invoke)
