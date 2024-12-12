@@ -125,16 +125,18 @@ async function playRaceEngine(character1, character2) {
         if (character2.PONTOS > 0) {
           character2.PONTOS--;
           console.log(`${character2.NOME} perdeu um ponto!`);
+        } else if (character2.PONTOS == 0) {
+          console.log(`${character2.NOME} perdeu o confronto mas não perdeu um ponto`);
         }
-        console.log(`${character2.NOME} perdeu o confronto ${character2.PONTOS}`);
       }
       if (powerResult1 < powerResult2) {
         if (character1.PONTOS > 0) {
           character1.PONTOS--;
           console.log(`${character1.NOME} perdeu um ponto!`);
+        } else if (character1.PONTOS == 0) {
+          console.log(`${character1.NOME} perdeu o confronto mas não perdeu um ponto`);
         }
-        console.log(`${character1.NOME} perdeu o confronto ${character1.PONTOS}`);
-      }
+        }
       if (powerResult1 == powerResult2) {
         console.log("Empate! Ninguém perdeu ponto");
       }
