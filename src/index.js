@@ -122,13 +122,13 @@ async function playRaceEngine(character1, character2) {
       );
 
       if (powerResult1 > powerResult2 && character2.PONTOS > 0) {
-          character2.PONTOS--;
-          console.log(`${character2.NOME} perdeu um ponto!`);
+        character2.PONTOS--;
+        console.log(`${character2.NOME} perdeu um ponto!`);
       }
       if (powerResult1 < powerResult2 && character1.PONTOS > 0) {
-          character1.PONTOS--;
-          console.log(`${character1.NOME} perdeu um ponto!`);
-        }
+        character1.PONTOS--;
+        console.log(`${character1.NOME} perdeu um ponto!`);
+      }
       if (powerResult1 == powerResult2) {
         console.log("Empate! Ninguém perdeu ponto");
       }
@@ -143,9 +143,23 @@ async function playRaceEngine(character1, character2) {
     }
     console.log(`--------------------------------------\n`);
   }
+}
+
+async function winnerResult(character1, character2) {
   console.log("VAMOS AO GRANDE VENCEDOR!🏆\n");
-  console.log(`${character1.NOME} ficou com ${character1.PONTOS} pontos`);
-  console.log(`${character2.NOME} ficou com ${character2.PONTOS} pontos`);
+  console.log(`${character1.NOME} ficou com ${character1.PONTOS} pontos\n`);
+  console.log(`${character2.NOME} ficou com ${character2.PONTOS} pontos\n`);
+
+  if (character1.PONTOS > character2.PONTOS) {
+    console.log(`${character1.NOME} é o grande vencedor ✨🎉\n`);
+  }
+  if (character1.PONTOS < character2.PONTOS) {
+    console.log(`${character2.NOME} é grande vencedor ✨🎉\n`);
+  }
+  if (character1.PONTOS == character2.PONTOS) {
+      console.log(`EMPATE 🤕`);
+      
+  }
 }
 
 // Chaves no começo e no final tranformar a função em uma função auto invocável (auto invoke)
@@ -156,4 +170,6 @@ async function playRaceEngine(character1, character2) {
 
   // AWAIT faz essa função esperar para ser executada
   await playRaceEngine(player1, player2);
+
+  await winnerResult(player1, player2);
 })();
