@@ -105,7 +105,7 @@ async function playRaceEngine(character1, character2) {
       let powerResult2 = character2.PODER + resultDice2;
 
       console.log(
-        `${character1.NOME} iniciou uma batalha contra ${character2.NOME}`
+        `${character1.NOME} iniciou uma batalha contra ${character2.NOME} 🥊`
       );
 
       await logRollResult(
@@ -146,14 +146,12 @@ async function playRaceEngine(character1, character2) {
     } else if (resultSkill1 < resultSkill2) {
       console.log(`${character2.NOME} marcou um ponto 🎉`);
       character2.PONTOS++;
-    } else if (resultSkill1 == resultSkill2) {
-      console.log("EMPATE! Ninguém pontuou");
     }
     console.log(`--------------------------------------\n`);
   }
-  console.log("VAMOS AO GRANDE VENCEDOR!🏆");
-  console.log(`\n${character1.NOME} ficou com: ${character1.PONTOS} pontos`);
-  console.log(`\n${character2.NOME} ficou com: ${character2.PONTOS} pontos`);
+  console.log("VAMOS AO GRANDE VENCEDOR!🏆\n");
+  console.log(`${character1.NOME} ficou com ${character1.PONTOS} pontos`);
+  console.log(`${character2.NOME} ficou com ${character2.PONTOS} pontos`);
 }
 
 // Chaves no começo e no final tranformar a função em uma função auto invocável (auto invoke)
